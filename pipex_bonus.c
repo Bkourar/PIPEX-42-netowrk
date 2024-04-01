@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:45:04 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/27 21:12:07 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 17:52:13 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,7 @@ static t_pipe	*pars(int ac1, char **av1, char **env1, int j)
 	while (++j < ac1 - 1)
 	{
 		paht = return_paht(av1[j], env1);
-		if (!paht)
-			return (free_linked (&tmp), NULL);
 		command = return_command(av1[j], spar(av1[j]));
-		if (!command)
-			return (free(paht), NULL);
 		tmp = create_linked_list(paht, command, j - i);
 		ft_lstadd_back(&node, tmp);
 	}
@@ -62,5 +58,5 @@ int	main(int ac, char **av, char **env)
 		excute_command(&pipe, env);
 	}
 	else
-		write (2, "nombre d'argument invalide\n", 27);
+		return (write (2, "nombre d'argument invalide\n", 27), 1);
 }

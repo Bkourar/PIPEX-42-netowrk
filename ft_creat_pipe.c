@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:08:48 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/27 17:45:00 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 17:11:09 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@ static int	file_d1(char *name, int mode, t_pipe *node)
 	{
 		fd = open(name, O_RDONLY);
 		if (fd == -1)
-			(write(2, "permission denied:\n", 20), close_file(&node),
-				free_linked(&node), exit(2));
+		{
+			write(2, "no such file or directory: ", 28);
+			(write(2, name, ft_strlen(name)), write(2, "\n", 1));
+		}
 		return (fd);
 	}
 	else if (mode == 1)
@@ -29,7 +31,7 @@ static int	file_d1(char *name, int mode, t_pipe *node)
 		fd = open(name, O_CREAT | O_WRONLY | O_TRUNC, 0644);
 		if (fd == -1)
 			(write(2, "permission denied:\n", 20), close_file(&node),
-				free_linked(&node), exit(2));
+				free_linked(&node), exit(1));
 		return (fd);
 	}
 	return (0);

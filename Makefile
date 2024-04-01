@@ -9,9 +9,9 @@ SRCS_BONUS = pipex_bonus.c ft_creat_pipe.c ft_excute_shell_command.c \
 		get_next_line.c get_next_utiles.c ft_utiles_2f.c ft_utiles_f.c ft_parse_paht.c
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
-CFLAGS = -Wall -Werror -Wextra -ggdb3
+CFLAGS = -Wall -Werror -Wextra
 RM = rm -rf
-CC = cc #-g -fsanitize=address
+CC = cc
 RED = \033[0;31m
 GREEN = \033[0;32m
 
@@ -21,7 +21,7 @@ $(NAME)			: $(OBJS) pipex.h
 	@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 	@echo "$(GREEN)make pipex"
 
-bo			: $(NAME_BONUS)
+bonus			: $(NAME_BONUS)
 
 $(NAME_BONUS)	: $(OBJS_BONUS) pipex_bonus.h
 	@$(CC) $(OBJS_BONUS) -o $(NAME_BONUS)

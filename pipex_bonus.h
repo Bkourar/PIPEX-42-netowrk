@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:06:31 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/27 15:47:18 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 01:49:24 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_pipe	*create_pipe(t_pipe **node, int ac, char **av);
 t_pipe	*create_linked_list(char *paht, char **command, int indic);
 t_pipe	*here_doc(t_pipe **node, int ac, char **av);
 void	excute_command(t_pipe **_data, char **en_va);
+void	free__linked_(t_pipe **lst);
 void	ft_lstadd_back(t_pipe **lst, t_pipe *new);
 void	run_childp(t_pipe *node, char **en_var);
 void	free_array(char **argement);

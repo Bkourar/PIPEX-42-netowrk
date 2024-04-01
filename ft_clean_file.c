@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 23:43:05 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/28 00:45:06 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 07:14:30 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ void	close_file(t_pipe **list)
 	while (tmp)
 	{
 		if (my_close(tmp->infile) < 0)
-			exit(2);
+			exit(1);
 		if (my_close(tmp->outfile) < 0)
-			exit(2);
+			exit(1);
 		tmp = tmp->next;
 	}
 }

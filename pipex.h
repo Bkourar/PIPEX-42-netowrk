@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 15:06:35 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/27 23:35:09 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 17:08:36 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ void	run_childp(t_pipe *node, char **en_var);
 void	free_array(char **argement);
 void	free_linked(t_pipe **lst);
 void	close_file(t_pipe **list);
+void	puts_error1(char **enva, int pos, char *str);
 char	*ft_strtrim(char const *s1, char const *set);
 char	*ft_strjoin(char const *s1, char const *s2);
 char	*return_paht(char *arg_v, char **en_va);

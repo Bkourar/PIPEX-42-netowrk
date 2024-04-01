@@ -6,7 +6,7 @@
 /*   By: bikourar <bikourar@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/27 13:47:34 by bikourar          #+#    #+#             */
-/*   Updated: 2024/03/27 17:03:14 by bikourar         ###   ########.fr       */
+/*   Updated: 2024/03/31 17:11:32 by bikourar         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	file_d1(char *name, int mode)
 	{
 		fd = open(name, O_RDONLY);
 		if (fd == -1)
-			(write(2, "fail open\n", 10), exit(2));
+			(write(2, "fail open\n", 10), exit(1));
 		return (fd);
 	}
 	return (open(name, O_CREAT | O_RDWR | O_TRUNC, 0644));
@@ -56,12 +56,13 @@ static void	manipilation_hdc(char **buffer, char *limiter, int *std_o)
 		write(1, "pipe heredoc> ", 15);
 		*buffer = get_next_line(0);
 		if (!*buffer)
-			break;
+			break ;
 		if (str_cmp(*buffer, limiter))
 			break ;
 		write(*std_o, *buffer, long_nl(*buffer, '\n') + 1);
 		free(*buffer);
 	}
+	free(*buffer);
 	close(*std_o);
 }
 
@@ -76,11 +77,11 @@ t_pipe	*here_doc(t_pipe **node, int ac, char **av)
 	while (temp->next)
 	{
 		if (pipe(fd) < 0)
-			(free(temp), free(temp->next), exit(2));
+			(free(temp), free(temp->next), exit(1));
 		if (temp->index == 0)
 		{
 			if (pipe(fd_1) < 0)
-				(free(temp), free(temp->next), exit(2));
+				(free(temp), free(temp->next), exit(1));
 			manipilation_hdc(&buf, av[2], &fd_1[1]);
 			temp->infile = fd_1[0];
 		}
